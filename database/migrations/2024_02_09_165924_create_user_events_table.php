@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('private_events', function (Blueprint $table) {
+        Schema::create('user_events', function (Blueprint $table) {
             $table->id();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
@@ -19,10 +19,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('location');
             $table->string('location_url')->url()->nullable();
+            $table->string('picture_path');
+            $table->string('invitation_url')->unique();
             $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
-            $table->string('slug')->unique();
-            // $table->json('invited')->nullable();
-            // $table->json('going')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('private_events');
+        Schema::dropIfExists('user_events');
     }
 };
