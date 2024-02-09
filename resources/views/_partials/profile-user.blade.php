@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="bar">
-        <h2>Welkom, {{$user->name}}</h2>
+        <h2>Welkom, $user->name</h2>
     </div>
     <div class="window">
         {{-- <form action="/add-email" method="POST">
@@ -9,23 +9,30 @@
             @method('PUT')
             <button>Wijzig email</button>
         </form> --}}
-        <form action="/logout" method="POST" class="buttonform">
-            @csrf
-            <button>Log out</button>
-        </form>
-        <form action="/delete" method="POST" class="buttonform">
-            @csrf
-            @method('DELETE')
-            <button>Verwijder account</button>
-        </form>
+            <form action="/logout" method="POST" class="buttonform">
+                @csrf
+                <button>Log out</button>
+            </form>
+            <form action="/delete" method="POST" class="buttonform" onsubmit="return confirm('No way back na dit!\nAccount is dan voor altijd ciao...')">
+                @csrf
+                @method('DELETE')
+                <button>Verwijder account</button>
+            </form>
     </div>
 </div>
 
 <div class="panel">
     <div class="bar">
-        <h2>Contacten</h2>
+        <h2>Connectionz</h2>
     </div>
     <div class="window">
+        <form action="/add-contact" method="POST" class="next">
+            @csrf
+            <input type="text" name="contact-name" placeholder="Vul een gebruikersnaam in"/>
+            <button>Voeg toe</button>
+        </form>
+        <ul><li>
+            yo</li></ul>
         @if (!empty($contacts) && count($contacts) > 0)
         <ul>
         @foreach ($contacts as $contact)
@@ -33,11 +40,6 @@
         @endforeach
         </ul>
         @endif
-        <form action="/add-contact" method="POST">
-            @csrf
-            <input type="text" name="contact-name" placeholder="Vul een gebruikersnaam in"/>
-            <button>Voeg toe</button>
-        </form>
     </div>
 </div>
 
@@ -73,6 +75,14 @@
         <h2>Jouw events</h2>
     </div>
     <div class="window">
+        <div class="event">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
         @if (!empty($organisingEvents) && count($organisingEvents) > 0)
         @foreach ($organisingEvents as $event)
         <div class="event">
@@ -90,7 +100,7 @@
         </div>
         @endforeach
         @else
-        <p>Geen evenementen</p>
+        {{-- <p>Geen evenementen</p> --}}
         @endif
     </div>
 </div>
@@ -99,22 +109,16 @@
     <div class="bar">
         <h2>Maak een evenement aan</h2>
     </div>
-    <div class="window"  style="display: flex">
+    <div class="window">
         <form action="/create" method="POST">
             @csrf
-            <input type="text" name="title" placeholder="Titel">
-            <input type="date" name='date'>
-            <input type="time"  name='time'>
-            <input type="text" name="location" placeholder="Locatie naam">
+            <input type="text" name="title" placeholder="Titel" required>
+            <input type="date" name='date' required min="<?php echo date("Y-m-d"); ?>">
+            <input type="time"  name='time' required>
+            <input type="text" name="location" placeholder="Locatie naam" required>
             <textarea name="description" placeholder="Tekstje voor warm te maken (optioneel)"></textarea>
             <input type="text" name="location_url" placeholder="Locatie URL (optioneel)">
-            {{-- <div class="selection">
-                <input type="radio" id="private" name="private-public" value="private" checked>
-                <label for="private">Private</label>
-                <input type="radio" id="public" name="private-public" value="public">
-                <label for="public">Public</label>
-            </div> --}}
-            {{-- <input type="file" accept="image/*"> --}}
+            <input type="file" accept="image/*">
             <button>Create event</button>
         </form>
     </div>

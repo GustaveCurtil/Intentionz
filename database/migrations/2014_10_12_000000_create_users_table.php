@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('password');
-            $table->string('email')->nullable();
-            $table->boolean('show_email')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

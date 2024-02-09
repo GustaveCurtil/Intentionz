@@ -25,7 +25,7 @@
             <input type="text" name="name" placeholder="Name">
             <input type="password" name="password" placeholder="Password">
             <input type="password" name="password-check" placeholder="Password check">
-            {{-- <input type="email" name="email" placeholder="email"> --}}
+            <input type="email" name="email" placeholder="email (moet ni)">
             <button>Register</button>
         </form>
 

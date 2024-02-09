@@ -66,34 +66,7 @@ ul {
 
 /* #endregion */
 
-/* #region INSIDE THE HEADER */
 
-header {
-    box-sizing: content-box;
-    width: 100%;
-    height: calc(2 * var(--gap));
-    border-bottom: 2px solid var(--black);
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-img {
-    max-height: calc(2 * var(--gap))  ;
-    padding: var(--padding);
-}
-
-
-nav a {
-    color: rgb(42, 42, 130);
-    font-weight: 600;
-    font-size: 16px;
-} 
-
-
-/* #endregion */
 
 /* #region INSIDE THE MAIN TAG*/
 main {
@@ -242,27 +215,13 @@ form textarea {
     border-bottom: 2px solid var(--black);
 }
 
-form input[type="radio"] {
-    display: none;
+form input[type='file'] {
+    font-size: 16px;
+    width: 100%;
     height: var(--gap);
-    line-height: var(--gap);
-}
-
-form label {
-    display: inline-block;
-    width: 50%;
-    height: var(--gap);
-    line-height: var(--gap);
-    font-size: 20px;
-    padding: 0 var(--padding);
-    color: gray;
+    padding: var(--padding);
+    border: 0;
     border-bottom: 2px solid var(--black);
-    overflow-y: hidden;
-}
-
-form input[type="radio"]:checked + label {
-    background-color: var(--pink)+76;
-    color: var(--black);
 }
 
 form select {
@@ -280,6 +239,10 @@ form input:last-of-type {
 
 form input:first-of-type {
     border-top: 0px solid black;
+}
+
+form input[type='file'] button {
+    background-color: #ff7575 !important;
 }
 
 button {
@@ -301,6 +264,22 @@ button {
 
 form button {
     padding: var(--padding);
+}
+
+.next {
+    display: flex; 
+}
+
+.next input[type="text"] {
+    flex-grow: 1;
+    width: initial;
+    border: 0;
+}
+
+.next button {
+    overflow: visible;
+    width: auto;
+    text-align: right;
 }
 
 @media screen and (max-width: 599px) {
@@ -453,7 +432,7 @@ td:last-child {
 /* #region INSIDE THE PROFILE SECTION */
 ul {
     padding: var(--padding);
-    border-bottom: 2px solid var(--black);
+    border-top: 2px solid var(--black);
 }
 
 .profile .event:last-of-type {

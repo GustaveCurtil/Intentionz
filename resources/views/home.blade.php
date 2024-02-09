@@ -4,7 +4,6 @@
 
     <main>
         <div class="section profile">
-            {{-- @include("_partials.header") --}}
             @auth
             @include("_partials.profile-user")
             @else
@@ -33,7 +32,7 @@
         sessionStorage.clear();
     </script>
     @endauth
-    <!-- Execute JavaScript to clear sessionStorage -->
+
 
     <script>
 
