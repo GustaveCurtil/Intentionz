@@ -59,14 +59,6 @@
                 </tr>
             </tbody>
         </table>
-        {{-- <div class="event event-small">
-            <table>
-                <tr>
-                    <td>23/02</td>
-                    <td>Crazy Titel</td>
-                </tr>
-            </table>
-        </div>
         <div class="event event-small">
             <table>
                 <tr>
@@ -74,10 +66,12 @@
                     <td>Crazy Titel</td>
                 </tr>
             </table>
-        </div> --}}
+        </div>
     </div>
 </div>
 
+
+{{-- Enkel zichtbaar indien er iets is om te tonen --}}
 <div class="panel">
     <div class="bar">
         <h2>Laat iets weten</h2>
@@ -102,6 +96,7 @@
     </div>
 </div>
 
+{{-- Enkel zichtbaar indien er iets is om te tonen --}}
 <div class="panel">
     <div class="bar">
         <h2>Jouw events</h2>
