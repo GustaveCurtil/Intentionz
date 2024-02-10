@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_event_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('invited_user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('invited_user_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->text('invited_guest_name')->nullable();
             $table->boolean('is_going')->default(false);
+            $table->boolean('is_not_going')->default(false);
             $table->timestamps();
         });
     }
