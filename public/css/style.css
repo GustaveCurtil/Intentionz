@@ -131,11 +131,6 @@ main {
     background-color: var(--pink);
 }
 
-.view-event .bar, .view-event .info {
-    
-    border-bottom: 2px solid var(--black);
-}
-
 .window {
     display: flex;
     flex-direction: column;
@@ -303,7 +298,7 @@ form button {
     background-color: white;
 }
 
-.event, .yourevent {
+.event {
     display: flex;
     align-items: center;
     border-bottom: 2px solid var(--black);
@@ -314,9 +309,6 @@ form button {
     padding: 0 var(--padding);
 }
 
-.yourevent:last-of-type {
-    border-bottom: 0;
-}
 
 h3 {
     display: flex;
@@ -326,9 +318,6 @@ h3 {
     padding: var(--padding);
 }
 
-.all-info {
-    display: none;
-}
 
 @media screen and (max-width: 599px) {
 
@@ -340,7 +329,7 @@ h3 {
 
 /* #endregion */
 
-/* #region INSIDE A TABLE */
+/* #region INSIDE A EVENT TABLE */
 table, tbody{
     width: 100%;
     border-collapse: collapse;
@@ -362,6 +351,32 @@ td:last-child {
     width: calc(100% - 2 * var(--gap));
     text-align: left; 
 }
+
+
+/* #endregion */
+
+/* #region INSIDE THE AGENDA TABLE */
+
+.agenda td {
+    width: calc(100% / 7);
+    border: 2px solid var(--black);
+    text-align: center;
+}
+
+.agenda thead td {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.agenda td:first-of-type {
+    border-left: none;
+}
+
+.agenda td:last-of-type {
+    border-right: none;
+}
+
 
 
 /* #endregion */
@@ -430,6 +445,23 @@ td:last-child {
 /* #endregion */
 
 /* #region INSIDE THE PROFILE SECTION */
+
+.event-small {    
+    min-height: auto;
+    max-height: auto;
+}
+
+.agenda tr:last-of-type td {
+    border-bottom: 0;
+}
+
+.window:has(.agenda) .event-small:first-of-type {
+    border-top: 2px solid var(--black);
+}
+
+
+
+
 ul {
     padding: var(--padding);
     border-top: 2px solid var(--black);

@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel welcome">
     <div class="bar">
         <h2>Welkom, $user->name</h2>
     </div>
@@ -18,6 +18,7 @@
                 @method('DELETE')
                 <button>Verwijder account</button>
             </form>
+    
     </div>
 </div>
 
@@ -58,7 +59,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="event kort">
+        {{-- <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
@@ -66,14 +67,14 @@
                 </tr>
             </table>
         </div>
-        <div class="event kort">
+        <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
                     <td>Crazy Titel</td>
                 </tr>
             </table>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -82,7 +83,7 @@
         <h2>Laat iets weten</h2>
     </div>
     <div class="window">
-        <div class="event kort">
+        <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
@@ -90,7 +91,7 @@
                 </tr>
             </table>
         </div>
-        <div class="event kort">
+        <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
@@ -106,7 +107,7 @@
         <h2>Jouw events</h2>
     </div>
     <div class="window">
-        <div class="event kort">
+        <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
@@ -114,7 +115,7 @@
                 </tr>
             </table>
         </div>
-        <div class="event kort">
+        <div class="event event-small">
             <table>
                 <tr>
                     <td>23/02</td>
