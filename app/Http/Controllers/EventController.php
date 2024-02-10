@@ -26,7 +26,10 @@ class EventController extends Controller
             $inputs['location_url'] = strip_tags($inputs['location_url']);
         }
         $inputs['creator_id'] = auth()->id();
-        $inputs['slug'] = "pri" . Str::random(8);
+
+
+        $inputs['invitation_slug'] = "pri" . Str::random(8);
+
         UserEvent::create($inputs);
         
         return redirect('/');

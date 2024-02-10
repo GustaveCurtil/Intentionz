@@ -85,9 +85,9 @@ main {
 @media screen and (min-width: 600px) {
     main {
         display:grid;
-        grid-template-columns: 1fr 1.1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-template-areas: 
-        "viewer events profile";
+        "events viewer profile";
     }
 
     .profile {

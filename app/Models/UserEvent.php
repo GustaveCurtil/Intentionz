@@ -9,7 +9,6 @@ class UserEvent extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['creator_id'];
 
     protected $fillable = [
         'date',
@@ -19,7 +18,8 @@ class UserEvent extends Model
         'location', 
         'location_url', 
         'picture_path', 
-        'invitation_slug'
+        'invitation_slug', 
+        'creator_id'
     ];
 
     public function creator()

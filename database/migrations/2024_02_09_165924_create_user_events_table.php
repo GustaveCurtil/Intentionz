@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('location');
             $table->string('location_url')->url()->nullable();
-            $table->string('picture_path');
+            $table->string('picture_path')->nullable();
             $table->string('invitation_slug')->unique();
             $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
