@@ -21,52 +21,83 @@
     </div>
 </div>
 
+
 <div class="panel">
     <div class="bar">
-        <h2>Connectionz</h2>
+        <h2>Agenda</h2>
     </div>
     <div class="window">
-        <form action="/add-contact" method="POST" class="next">
-            @csrf
-            <input type="text" name="contact-name" placeholder="Vul een gebruikersnaam in"/>
-            <button>Voeg toe</button>
-        </form>
-        <ul><li>
-            yo</li></ul>
-        @if (!empty($contacts) && count($contacts) > 0)
-        <ul>
-        @foreach ($contacts as $contact)
-        <li>{{ $contact->contact2->name}}</li>
-        @endforeach
-        </ul>
-        @endif
+        <table class="agenda">
+            <thead>
+                <td>MA</td>
+                <td>DI</td>
+                <td>WO</td>
+                <td>DO</td>
+                <td>VR</td>
+                <td>ZA</td>
+                <td>ZO</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12/02</td>
+                    <td>13/02</td>
+                    <td>14/02</td>
+                    <td>15/02</td>
+                    <td>16/02</td>
+                    <td>17/02</td>
+                    <td>18/02</td>
+                </tr>
+                <tr>
+                    <td>19/02</td>
+                    <td>20/02</td>
+                    <td>21/02</td>
+                    <td>22/02</td>
+                    <td>23/02</td>
+                    <td>24/02</td>
+                    <td>25/02</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="event kort">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
+        <div class="event kort">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
 <div class="panel">
     <div class="bar">
-        <h2>Gaan</h2>
+        <h2>Laat iets weten</h2>
     </div>
     <div class="window">
-        @if (!empty($goingEvents) && count($goingEvents) > 0)
-            @foreach ($goingEvents as $event)
-            <div class="event">
-                <table>
-                    <tr>
-                        <td>{{ $event->date }}</td>
-                        <td>{{ $event->title }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ $event->time }}</td>
-                        <td>{{ $event->user->name}}</td>
-                    </tr>
-                </table>
-                @include("_partials.event-hidden", ['event' => $event])
-            </div>
-            @endforeach
-        @else
-            <p>Nergens...</p>
-        @endif
+        <div class="event kort">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
+        <div class="event kort">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -75,7 +106,15 @@
         <h2>Jouw events</h2>
     </div>
     <div class="window">
-        <div class="event">
+        <div class="event kort">
+            <table>
+                <tr>
+                    <td>23/02</td>
+                    <td>Crazy Titel</td>
+                </tr>
+            </table>
+        </div>
+        <div class="event kort">
             <table>
                 <tr>
                     <td>23/02</td>
