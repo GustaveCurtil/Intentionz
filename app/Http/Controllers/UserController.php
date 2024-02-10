@@ -38,7 +38,11 @@ class UserController extends Controller
     }
 
     public function logout() {
-        auth()->logout();
+        $user = Auth::user(); // om te vermijden dat het na vanzelf afmelden door timeout, we een error krijgen bij afmelden
+        if ($user) {
+
+            auth()->logout();
+        }
         return redirect('/');
     }
 

@@ -37,8 +37,3 @@ Route::delete('/delete', [UserController::class, 'deleteAccount']);
 //create an event
 Route::post('/create', [EventController::class, 'createEvent']);
 
-
-//Interaction with other users
-Route::post('/add-contact', [ContactController::class, 'addContact']);
-Route::post('/invite/{id}', [ContactController::class, 'inviteContacts']);
-Route::post('/going/{id}', [ContactController::class, 'going']);
