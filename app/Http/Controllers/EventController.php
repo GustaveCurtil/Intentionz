@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PublicEvent;
+use App\Models\UserEvent;
 use Illuminate\Support\Str;
-use App\Models\PrivateEvent;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
 class EventController extends Controller
 {
@@ -29,7 +27,7 @@ class EventController extends Controller
         }
         $inputs['creator_id'] = auth()->id();
         $inputs['slug'] = "pri" . Str::random(8);
-        PrivateEvent::create($inputs);
+        UserEvent::create($inputs);
         
         return redirect('/');
     }
