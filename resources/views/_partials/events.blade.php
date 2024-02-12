@@ -1,9 +1,21 @@
-@if (!empty($events) && count($events)>0)
+{{-- @if (!empty($events) && count($events)>0) --}}
 <div class="bar">
     <h2>Events</h2>
 </div>
 <div class="window">
-    @foreach ($events as $event)
+    <div class="event">
+        <table>
+            <tr>
+                <td>12/02</td>
+                <td>Titel van het evenement</td>
+            </tr>
+            <tr>
+                <td>20:30</td>
+                <td>uitgenodigd door FeliceVTG</td>
+            </tr>
+        </table>
+    </div>
+    {{-- @foreach ($events as $event)
     @auth
     <div class="event">
         <table>
@@ -19,7 +31,7 @@
         @include("_partials.event-hidden", ['event' => $event])
     </div>
     @endauth
-    @endforeach
+    @endforeach --}}
 </div>
-@endif
+{{-- @endif --}}
     

@@ -85,9 +85,9 @@ main {
 @media screen and (min-width: 600px) {
     main {
         display:grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 2px 1.2fr 2px 1fr;
         grid-template-areas: 
-        "events viewer profile";
+        "events left viewer right profile";
     }
 
     .profile {
@@ -101,6 +101,19 @@ main {
     .events {
         grid-area: events;
     }
+
+    .seperation-left {
+        grid-area: left;
+        width: 2px;
+        height: auto;
+        background-color: var(--black);
+    }
+
+    .seperation-right {
+        grid-area: right;
+        width: 2px;
+        background-color: var(--black);
+    }
 }
 /* #endregion */
 
@@ -109,6 +122,8 @@ main {
     display: flex;
     flex-direction: column;
     overflow: auto;
+
+    height: fit-content;
 }
 
 .panel {
@@ -148,10 +163,6 @@ main {
 @media screen and (min-width: 600px) {
     .viewer .window, .profile .window {
         display: none;
-    }
-
-    .section:not(:first-child){
-        border-right: 2px solid var(--black);
     }
 }
 

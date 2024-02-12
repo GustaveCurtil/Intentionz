@@ -11,7 +11,7 @@
             @endauth
             
         </div>
-
+        <div class="seperation-left"></div>
         <div class="section viewer">
             
             <div class="view-event">
@@ -19,7 +19,7 @@
             </div>    
 
         </div>
-
+        <div class="seperation-right"></div>
         <div class="section events">
             @include("_partials.events")
         </div>
