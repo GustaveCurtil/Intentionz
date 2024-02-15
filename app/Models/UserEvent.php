@@ -9,6 +9,26 @@ class UserEvent extends Model
 {
     use HasFactory;
 
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
+
+    public function guests()
+    {
+        return $this->invitations();
+    }
+    
+    public function goingGuests()
+    {
+        return $this->invitations()->where('response', true);
+    }
+
+    public function notGoingGuests()
+    {
+        return $this->invitations()->where('response', false);
+    }
+
 
     protected $fillable = [
         'date',

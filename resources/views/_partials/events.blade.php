@@ -1,21 +1,10 @@
-{{-- @if (!empty($events) && count($events)>0) --}}
+@if (!empty($events) && count($events)>0)
 <div class="bar">
-    <h2>Events</h2>
+    <h2>Evenementen</h2>
 </div>
+
 <div class="window">
-    <div class="event">
-        <table>
-            <tr>
-                <td>12/02</td>
-                <td>Titel van het evenement</td>
-            </tr>
-            <tr>
-                <td>20:30</td>
-                <td>uitgenodigd door FeliceVTG</td>
-            </tr>
-        </table>
-    </div>
-    {{-- @foreach ($events as $event)
+    @foreach ($events as $event)
     @auth
     <div class="event">
         <table>
@@ -25,13 +14,16 @@
             </tr>
             <tr>
                 <td>{{ $event->time }}</td>
-                <td>{{ $event->user->name}}</td>
+                <td>{{ $event->location}}</td>
+                <td>{{ $event->creator->name}}</td>
             </tr>
         </table>
-        @include("_partials.event-hidden", ['event' => $event])
+        <div class="hidden" style="display: none">
+        @include("_partials.event-view", ['event' => $event])
+        </div>
     </div>
     @endauth
-    @endforeach --}}
+    @endforeach
 </div>
-{{-- @endif --}}
+@endif
     

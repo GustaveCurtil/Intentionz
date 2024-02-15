@@ -9,22 +9,25 @@
 
 :root {
     --desktop-events-width: 650px;
-    --gap: 35px;
+    --gap: 40px;
     --padding: 4px;
-    --black: rgb(34, 34, 34);
-    --pink: #ff7575;
+    --black: rgb(191, 194, 169);
+    --pink: rgba(255, 146, 162, 0.667);
+    --selection: rgba(203, 197, 80, 0.688);
+    /* --pink: #ff7575; */
+    --content-color: rgb(75, 75, 75);
 }
 
 ::-webkit-scrollbar
 {
 	width: 8px;
-    border-left: 2px solid black;
+    border-left: 2px solid var(--content-color);
 }
 
 ::-webkit-scrollbar-thumb
 {
     background-color: var(--pink);
-    border-left: 2px solid black;
+    border-left: 2px solid var(--content-color);
  
 }
 
@@ -33,9 +36,13 @@ body {
     min-height: 100svh;
 
     overflow-x: hidden;
+    font-size: 18px;
 
-    font-family: Arial, Helvetica, sans-serif ;
-    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--content-color);
+    background-color: var(--black);
+
+    font-weight: lighter;
 
     /* background-image: url(/media/stoelen.png);
     background-repeat: repeat;
@@ -45,18 +52,21 @@ body {
 
 h1 {
     padding: var(--padding);
+    font-size: 28px;
 }
 
 h2 {
     padding: 0 var(--padding);
     display: flex;
     align-items: center;
+    font-size: 24px;
+    color: var(--content-color);
 }
 
 p {
     padding: var(--padding);
     min-height: var(--gap);
-}
+}main
 
 ul {
     min-height: var(--gap);
@@ -72,6 +82,8 @@ ul {
 main {
     width: 100%;
     height: 100svh;
+    max-height: 100svh;
+    overflow-y: hidden;
 }
 
 
@@ -85,7 +97,7 @@ main {
 @media screen and (min-width: 600px) {
     main {
         display:grid;
-        grid-template-columns: 1fr 2px 1.2fr 2px 1fr;
+        grid-template-columns: 7fr 2px 9fr 2px 7fr;
         grid-template-areas: 
         "events left viewer right profile";
     }
@@ -106,13 +118,13 @@ main {
         grid-area: left;
         width: 2px;
         height: auto;
-        background-color: var(--black);
+        background-color: var(--content-color);
     }
 
     .seperation-right {
         grid-area: right;
         width: 2px;
-        background-color: var(--black);
+        background-color: var(--content-color);
     }
 }
 /* #endregion */
@@ -124,10 +136,11 @@ main {
     overflow: auto;
 
     height: fit-content;
+    max-height: 100svh;
 }
 
 .panel {
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
     height: auto;
     overflow: visible; /*PUTAIN FIEU*/
 }
@@ -149,8 +162,9 @@ main {
 .window {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--black);
     min-height: auto;
+    background-color: none;
 }
 
 
@@ -174,10 +188,19 @@ form {
     width: 100%;
     font-size: 0;
 }
+::placeholder {
+    color: var(--content-color);
+    opacity: 1; /* Firefox */
+  }
 
 .buttonform {
     display: inline-block;
-    width: auto;
+    width: fit-content;
+}
+
+.buttonform a {
+    padding: var(--padding);
+    color: var(--content-color);
 }
 
 form input[type="text"], form input[type="url"], form input[type="password"], form input[type="search"] {
@@ -186,7 +209,9 @@ form input[type="text"], form input[type="url"], form input[type="password"], fo
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
+    background-color: var(--black);
+    color: var(--content-color);
 }
 
 form input[type="date"] {
@@ -195,8 +220,10 @@ form input[type="date"] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--black);
-    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
+    border-right: 2px solid var(--content-color);
+    background-color: var(--black);
+    color: var(--content-color);
 }
 
 form input[type="time"] {
@@ -205,8 +232,10 @@ form input[type="time"] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
     overflow-y: hidden;
+    background-color: var(--black);
+    color: var(--content-color);
 
 }
 
@@ -218,7 +247,9 @@ form textarea {
     padding: var(--padding);
     resize: vertical;
     border: 0;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
+    background-color: var(--black);
+    color: var(--content-color);
 }
 
 form input[type='file'] {
@@ -227,7 +258,7 @@ form input[type='file'] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
 }
 
 form select {
@@ -236,27 +267,25 @@ form select {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
 }
 
 form input:last-of-type {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--content-color);
 }
 
 form input:first-of-type {
-    border-top: 0px solid black;
-}
-
-form input[type='file'] button {
-    background-color: #ff7575 !important;
+    border-top: 0px solid var(--content-color);
 }
 
 button {
-    font-size: 20px;
+    font-size: 22px;
     width: 100%;
     height: var(--gap);
     background:none;
     border: none;
+
+    color: var(--content-color);
     
 
     text-align: left;
@@ -265,7 +294,6 @@ button {
 
     
     text-decoration: underline;
-    font-weight: 600;
 }
 
 form button {
@@ -305,14 +333,14 @@ form button {
 
 .events .bar {
     box-sizing: content-box;
-    border-bottom: 2px solid var(--black);
-    background-color: white;
+    border-bottom: 2px solid var(--content-color);
+    background-color: var(--black);
 }
 
 .event {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
     min-height: calc((var(--gap) * 2));
     max-height: calc( (var(--gap) * 2));
     overflow-y: hidden;
@@ -346,6 +374,7 @@ table, tbody{
     border-collapse: collapse;
     padding: 0;
     height: auto;
+    background-color: none;
 }
 
 tr {
@@ -356,11 +385,16 @@ td {
     width: calc(2 * var(--gap));
     height: var(--gap);
     font-size: 20px;
+
 }
 
-td:last-child {
+td:nth-child(2) {
     width: calc(100% - 2 * var(--gap));
     text-align: left; 
+}
+
+td:nth-child(3) {
+    text-align: right;
 }
 
 
@@ -370,7 +404,7 @@ td:last-child {
 
 .agenda td {
     width: calc(100% / 7);
-    border: 2px solid var(--black);
+    border: 2px solid var(--content-color);
     text-align: center;
 }
 
@@ -395,61 +429,96 @@ td:last-child {
 /* #region INSIDE A VIEW EVENT */
 .view-event {
     width: 100%;
-    background-color: white;
-
+    height: fit-content;
+    background-color: var(--black);
 }
 
 .view-event img {
-    height: calc(11 * var(--gap));
-    min-width: 100%;
-    background-color: yellow;
+    height: fit-content;
+    width: 100%;
     padding: 0;
+    object-fit: cover;
+    object-position: center;
+    mix-blend-mode: hard-light;
+}
+
+.img {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    font-size: 0;
 }
 
 .view-event p {
     padding: calc(var(--gap) / 2) var(--padding);
+    width: 100%;
 }
 
-.view-event h2 {
-    padding: calc(var(--gap) / 2) var(--padding);
-}
-
-.view-event a {
+.where a {
     text-decoration-thickness: 1px;
     font-weight: 600;
-    color: black;
+    color: var(--content-color);
 }
 
-.organisator, .when, .where, .invited, .going {
+.organisator, .when, .where {
+    padding: var(--padding);
+    font-size: 24px;
+}
+
+
+.invited, .going {
+    font-size: 20px;
+    font-weight: 100;
+    width: 100%;
+    margin-top: auto;
     padding: var(--padding);
 }
 
-.when {
-    font-weight: 600;
-    font-size: 18px;
+.going span {
+    font-weight: bold;
 }
 
-.invited, .going {
-    font-size: 16px;
-    font-weight: 100;
-}
-
-.invited {
-    padding-top: var(--gap);
-}
-.going {
-    padding-bottom: var(--gap);
+.not-going {
+    padding: var(--padding) 0;
+    /* transform: scale(-1,-1); */
 }
 
 .commands {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--content-color);
+    box-sizing: border-box;
 }
 
 .commands:last-of-type {
-    border-top: 2px solid var(--black);
+    border-top: 2px solid var(--content-color);
 }
+
+.invite-url {
+    padding-left: var(--padding);
+}
+
+.invitation {
+    min-height: calc(100svh - 2 * var(--gap) - 4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commands-bottom {
+    border-bottom: 0;
+}
+
+.commands form button{
+    width: fit-content;
+}
+
+.response {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 
@@ -467,7 +536,7 @@ td:last-child {
 }
 
 .window:has(.agenda) .event-small:first-of-type {
-    border-top: 2px solid var(--black);
+    border-top: 2px solid var(--content-color);
 }
 
 
@@ -475,13 +544,39 @@ td:last-child {
 
 ul {
     padding: var(--padding);
-    border-top: 2px solid var(--black);
+    border-top: 2px solid var(--content-color);
 }
 
 .profile .event:last-of-type {
     border-bottom: none;
 }
 
+.welcome .window {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
 
 
 /* #endregion */
+
+/*/ / MOBILE / /*/
+
+@media screen and (max-width: 599px) {
+    .profile, .events, .seperation-left, .seperation-right{
+        display: none;
+    }
+
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+/*/ / DEBUGGING DD / /*/
+.HTMLeditor red {
+    color: red;
+}
+

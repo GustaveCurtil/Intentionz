@@ -9,32 +9,47 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function register(Request $request, $slug = null){
-        //If you enter via a slugged link!
+        
         $inputs = $request->validate([
             'name' => 'required', 
             'password' => 'required',
             'password-check' => 'required'
         ]);
 
+        $user = User::where('name', $inputs['name'])->first();
+
+        if ($user) {
+            dd("De gebruikersnaam '" . $inputs['name'] . "' is al in gebruik");
+        }
 
         if ($inputs['password'] === $inputs['password-check']) {
             $inputs['password'] = bcrypt($inputs['password']);
             $user = User::create($inputs);
             auth()->login($user);
+        } else {
+            dd("De wachtwoorden komen niet overeen...");
         }
-
+        
         return redirect('/' . $slug);
     }
 
-    public function login(Request $request) {
+    public function login(Request $request, $slug = null) {
         $inputs = $request->validate([
             'name' => 'required', 
             'password' => 'required'
         ]);
+
+        $user = User::where('name', $inputs['name'])->first();
+
+        if (!$user) {
+            dd("'" . $inputs['name'] . "' zit niet in de database bro");
+        }
+
         if (auth()->attempt(['name' => $inputs['name'], 'password' => $inputs['password']])) {
             $request->session()->regenerate();
         }
-        return redirect('/');
+
+        return redirect('/' . $slug);
     }
 
     public function logout() {

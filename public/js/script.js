@@ -1,19 +1,17 @@
-const eventsSection =  document.querySelector('.events')
-console.log(eventsSection.clientHeight)
+let eventsSection =  document.querySelector('.events')
 
-const viewerSection =  document.querySelector('.viewer')
-console.log(viewerSection.clientHeight)
+let viewerSection =  document.querySelector('.viewer')
 
-
-const profileSection =  document.querySelector('.profile')
-console.log(profileSection.clientHeight)
+let profileSection =  document.querySelector('.profile')
 
 function seperationHeights() {
+    console.log(viewerSection.clientHeight)
+    console.log(viewerSection.offsetHeight)
+
     let seperationLeft = document.querySelector('.seperation-left');
     let seperationRight = document.querySelector('.seperation-right');
     if (eventsSection.clientHeight > viewerSection.clientHeight) {
         seperationLeft.style.height = eventsSection.clientHeight + 'px';
-        console.log(seperationLeft.clientHeight)
     } else {
         seperationLeft.style.height = viewerSection.clientHeight + 'px';
     }
@@ -40,8 +38,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
             const event = events[sessionStorage.getItem('event')];
             let hiddenInfo = event.querySelector(".hidden")
             event.showInfo = false;
-            event.style.backgroundColor = "yellow"
-            event.style.backgroundColor = "yellow";
+            event.style.backgroundColor = "var(--selection)";
+            event.style.backgroundColor = "var(--selection)";
             event.showInfo = true;
             view.innerHTML = hiddenInfo.innerHTML;
         } else {
@@ -76,6 +74,7 @@ for (let i = 0; i < panels.length; i++) {
         sessionStorage.setItem('panel' + i, window.style.display);
         seperationHeights()
     })
+    
 }
 
 
@@ -88,22 +87,46 @@ for (let i = 0; i < events.length; i++) {
         view.innerHTML = "";
         if (!event.showInfo) {
             events.forEach(event => {
-                event.style.backgroundColor = "white";
+                event.style.backgroundColor = "var(--black)";
                 event.showInfo = false;  
             });
-            event.style.backgroundColor = "yellow";
+            event.style.backgroundColor = "var(--selection)";
             event.showInfo = true;
             view.innerHTML = hiddenInfo.innerHTML;
             sessionStorage.setItem('event', i)
-
         } else {
-            event.style.backgroundColor = "white";  
+            event.style.backgroundColor = "var(--black)";  
             event.showInfo = false;
             sessionStorage.removeItem('event');
         }
+        
+        seperationHeights()
+
+        //URL KNOP KOPIEREN
+        let copyButton = view.querySelector(".invite-url")
+        if (copyButton) {
+            copyButton.addEventListener("click", () => {
+                navigator.clipboard.writeText(copyButton.textContent);
+                alert("Uitnodigingslink gekopieerd:\n" + copyButton.textContent);
+            })   
+        }
+
    })
 }
 
 
+//Image not bigger then... 
 
-
+function VerifyUploadSizeIsOK()
+{
+   /* Attached file size check. Will Bontrager Software LLC, https://www.willmaster.com */
+   var UploadFieldID = "file-upload";
+   var MaxSizeInBytes = 51200;
+   var fld = document.getElementById(UploadFieldID);
+   if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
+   {
+      alert("Converteer de afbeelding (idealiter Z/W) zodat ie minder groot is dan: " + parseInt(MaxSizeInBytes/1024) + "kb. Ik raad je aan om jouw foto een korrel te geven met deze easy-to-user tool: https://doodad.dev/dither-me-this/");
+      return false;
+   }
+   return true;
+}

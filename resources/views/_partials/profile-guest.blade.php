@@ -9,24 +9,23 @@
     <div class="window">
         <form action="/{{$urlEvent->slug}}/login" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Name">
-            <input type="password" name="password" placeholder="Password">
+            <input type="text" name="name" placeholder="Gebruikersnaam" required>
+            <input type="password" name="password" placeholder="Wachtwoord" required>
             <button>Login</button>
         </form>
     </div>
 </div>
 <div class="panel">
     <div class="bar">
-        <h2>Register</h2>
+        <h2>Registreer</h2>
     </div>
     <div class="window">
         <form action="/{{$urlEvent->slug}}/register" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Name">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="password-check" placeholder="Password check">
-            <input type="email" name="email" placeholder="email (moet ni)">
-            <button>Register</button>
+            <input type="text" name="name" placeholder="Gebruikersnaam" required minlength="2">
+            <input type="password" name="password" placeholder="Wachtwoord" required  minlength="3">
+            <input type="password" name="password-check" placeholder="Wachtwoord check" required  minlength="3">
+            <button>Maak aan</button>
         </form>
 
     </div>
@@ -40,25 +39,25 @@
         <h2>Login</h2>
     </div>
     <div class="window">
-        <form action="/login" method="POST">
+        <form action="/login{{ isset($invitation) ? '/' .$invitation->invitation_slug : '' }}" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Name">
-            <input type="password" name="password" placeholder="Password">
+            <input type="text" name="name" placeholder="Gebruikersnaam" required>
+            <input type="password" name="password" placeholder="Wachtwoord" required>
             <button>Login</button>
         </form>
     </div>
 </div>
 <div class="panel">
     <div class="bar">
-        <h2>Register</h2>
+        <h2>Registreer</h2>
     </div>
     <div class="window">
-        <form action="/register" method="POST">
+        <form action="/register{{ isset($invitation) ? '/' . $invitation->invitation_slug : '' }}" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Name">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="password-check" placeholder="Password check">
-            <button>Register</button>
+            <input type="text" name="name" placeholder="Gebruikersnaam" required  minlength="2"> 
+            <input type="password" name="password" placeholder="Wachtwoord" required  minlength="3">
+            <input type="password" name="password-check" placeholder="Wachtwoord check" required  minlength="3">
+            <button>Maak aan</button>
         </form>
 
     </div>
