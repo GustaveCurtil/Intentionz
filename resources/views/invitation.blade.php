@@ -13,7 +13,11 @@
         </div>
         <div class="seperation-left"></div>
         <div class="section viewer">
-            
+            @guest
+            <div class="homebutton">
+                <button><a href="/">❌</a></button>
+                </div>
+            @endguest
             <div class="view-event">
                 @include("_partials.event-view", ['event' => $invitation])
             </div>    

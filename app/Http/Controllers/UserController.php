@@ -45,10 +45,11 @@ class UserController extends Controller
             dd("'" . $inputs['name'] . "' zit niet in de database bro");
         }
 
-        if (auth()->attempt(['name' => $inputs['name'], 'password' => $inputs['password']])) {
-            $request->session()->regenerate();
+        if (!auth()->attempt(['name' => $inputs['name'], 'password' => $inputs['password']])) {
+            dd('Niet het juiste wachtwoord! Mischien ebde een typfoutje gemaakt ofzo.');
+        } else {
+        $request->session()->regenerate();
         }
-
         return redirect('/' . $slug);
     }
 

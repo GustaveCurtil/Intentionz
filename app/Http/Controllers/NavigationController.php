@@ -38,12 +38,14 @@ class NavigationController extends Controller
             $invitation->invitation_link = URL::to($invitation->invitation_slug);
 
             if ($user) {
+                if (!$invitation->creator_id === $user->id) {
                 $this->saveInInvitations($user, $invitation);
-                $yourEvents = $events->where('creator_id', $user->id)->sortBy('date')->sortBy('time');
+                }
+                $yourEvents = $events->where('creator_id', $user->id)->sortBy('date');
                 $invitations = $events->filter(function ($event) use ($user) {
                     return $event->invitations->contains('invited_user_id', $user->id);
                 });
-                $events = $yourEvents->merge($invitations)->sortBy('date')->sortBy('time');
+                $events = $yourEvents->merge($invitations)->sortBy('date');
                 return view('invitation', ['user' => $user, 'events' => $events, 'yourEvents' => $yourEvents, 'invitation' => $invitation]);
             }
 
@@ -100,10 +102,16 @@ class NavigationController extends Controller
 
     }
 
-    public function goToEditor($id = null) {
-        $user = Auth::user();
-        $event = UserEvent::where('id', $id)->first();
+    public function goToEditor(UserEvent $event) {
+        session(['event_id' => $event->id]);
 
-        return view('editor', ['event' => $event, 'user' => $user]);
+        return redirect('/editor');
+    }
+
+    public function showEditor() {
+        $eventId = session('event_id');
+        $event = UserEvent::find($eventId);
+        $user = Auth::user();
+        return view("editor", ['event' => $event, 'user' => $user]);
     }
 }

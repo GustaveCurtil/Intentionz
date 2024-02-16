@@ -11,23 +11,25 @@
     --desktop-events-width: 650px;
     --gap: 40px;
     --padding: 4px;
-    --black: rgb(191, 194, 169);
-    --pink: rgba(255, 146, 162, 0.667);
     --selection: rgba(203, 197, 80, 0.688);
-    /* --pink: #ff7575; */
-    --content-color: rgb(75, 75, 75);
+    /* --pink-theme: #ff7575; */
+    --content-theme: rgb(75, 75, 75);
+    --windows-theme: rgba(245, 245, 245, 0.405);
+    --bg-theme: rgb(185, 204, 187);
+    --pink-theme: rgba(255, 146, 162, 0.667);
 }
 
 ::-webkit-scrollbar
 {
 	width: 8px;
-    border-left: 2px solid var(--content-color);
+    border-left: 2px solid var(--content-theme);
+    background-color: var(--bg-theme);
 }
 
 ::-webkit-scrollbar-thumb
 {
-    background-color: var(--pink);
-    border-left: 2px solid var(--content-color);
+    background-color: var(--pink-theme);
+    border-left: 2px solid var(--content-theme);
  
 }
 
@@ -36,11 +38,12 @@ body {
     min-height: 100svh;
 
     overflow-x: hidden;
+    overflow-y: hidden;
     font-size: 18px;
 
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--content-color);
-    background-color: var(--black);
+    color: var(--content-theme);
+    background-color: var(--bg-theme);
 
     font-weight: lighter;
 
@@ -60,7 +63,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 24px;
-    color: var(--content-color);
+    color: var(--content-theme);
 }
 
 p {
@@ -84,6 +87,9 @@ main {
     height: 100svh;
     max-height: 100svh;
     overflow-y: hidden;
+}
+.viewer {
+    position: relative;
 }
 
 
@@ -118,13 +124,13 @@ main {
         grid-area: left;
         width: 2px;
         height: auto;
-        background-color: var(--content-color);
+        background-color: var(--content-theme);
     }
 
     .seperation-right {
         grid-area: right;
         width: 2px;
-        background-color: var(--content-color);
+        background-color: var(--content-theme);
     }
 }
 /* #endregion */
@@ -137,10 +143,11 @@ main {
 
     height: fit-content;
     max-height: 100svh;
+    background-color: var(--windows-theme);
 }
 
 .panel {
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
     height: auto;
     overflow: visible; /*PUTAIN FIEU*/
 }
@@ -156,15 +163,13 @@ main {
 }
 
 .profile .bar {
-    background-color: var(--pink);
+    background-color: var(--pink-theme);
 }
 
 .window {
     display: flex;
     flex-direction: column;
-    background-color: var(--black);
     min-height: auto;
-    background-color: none;
 }
 
 
@@ -189,7 +194,7 @@ form {
     font-size: 0;
 }
 ::placeholder {
-    color: var(--content-color);
+    color: var(--content-theme);
     opacity: 1; /* Firefox */
   }
 
@@ -200,7 +205,7 @@ form {
 
 .buttonform a {
     padding: var(--padding);
-    color: var(--content-color);
+    color: var(--content-theme);
 }
 
 form input[type="text"], form input[type="url"], form input[type="password"], form input[type="search"] {
@@ -209,9 +214,9 @@ form input[type="text"], form input[type="url"], form input[type="password"], fo
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--content-color);
-    background-color: var(--black);
-    color: var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
+    background-color:transparent;
+    color: var(--content-theme);
 }
 
 form input[type="date"] {
@@ -220,10 +225,10 @@ form input[type="date"] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--content-color);
-    border-right: 2px solid var(--content-color);
-    background-color: var(--black);
-    color: var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
+    border-right: 2px solid var(--content-theme);
+    background-color:transparent;
+    color: var(--content-theme);
 }
 
 form input[type="time"] {
@@ -232,10 +237,10 @@ form input[type="time"] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
     overflow-y: hidden;
-    background-color: var(--black);
-    color: var(--content-color);
+    background-color:transparent;
+    color: var(--content-theme);
 
 }
 
@@ -247,9 +252,9 @@ form textarea {
     padding: var(--padding);
     resize: vertical;
     border: 0;
-    border-bottom: 2px solid var(--content-color);
-    background-color: var(--black);
-    color: var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
+    background-color:transparent;
+    color: var(--content-theme);
 }
 
 form input[type='file'] {
@@ -258,7 +263,7 @@ form input[type='file'] {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
 }
 
 form select {
@@ -267,15 +272,15 @@ form select {
     height: var(--gap);
     padding: var(--padding);
     border: 0;
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
 }
 
 form input:last-of-type {
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
 }
 
 form input:first-of-type {
-    border-top: 0px solid var(--content-color);
+    border-top: 0px solid var(--content-theme);
 }
 
 button {
@@ -285,7 +290,7 @@ button {
     background:none;
     border: none;
 
-    color: var(--content-color);
+    color: var(--content-theme);
     
 
     text-align: left;
@@ -333,14 +338,13 @@ form button {
 
 .events .bar {
     box-sizing: content-box;
-    border-bottom: 2px solid var(--content-color);
-    background-color: var(--black);
+    border-bottom: 2px solid var(--content-theme);
 }
 
 .event {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
     min-height: calc((var(--gap) * 2));
     max-height: calc( (var(--gap) * 2));
     overflow-y: hidden;
@@ -404,7 +408,7 @@ td:nth-child(3) {
 
 .agenda td {
     width: calc(100% / 7);
-    border: 2px solid var(--content-color);
+    border: 2px solid var(--content-theme);
     text-align: center;
 }
 
@@ -422,6 +426,25 @@ td:nth-child(3) {
     border-right: none;
 }
 
+.homebutton {
+    height: var(--gap);
+    display: flex;
+    justify-content: left;
+    position: absolute;
+    width: 100%;
+    padding-right: 8px;
+}
+
+.homebutton button {
+    width: var(--gap);
+    padding: var(--padding);
+    text-decoration: none;
+}
+
+.homebutton a {
+    color: var(--content-theme);
+    text-decoration: none;
+}
 
 
 /* #endregion */
@@ -430,7 +453,6 @@ td:nth-child(3) {
 .view-event {
     width: 100%;
     height: fit-content;
-    background-color: var(--black);
 }
 
 .view-event img {
@@ -439,7 +461,7 @@ td:nth-child(3) {
     padding: 0;
     object-fit: cover;
     object-position: center;
-    mix-blend-mode: hard-light;
+    /* mix-blend-mode: hard-light; */
 }
 
 .img {
@@ -457,21 +479,32 @@ td:nth-child(3) {
 .where a {
     text-decoration-thickness: 1px;
     font-weight: 600;
-    color: var(--content-color);
+    color: var(--content-theme);
 }
 
 .organisator, .when, .where {
     padding: var(--padding);
     font-size: 24px;
+    text-align: center;
 }
 
+.invitation h1 {
+    text-align: center;
+}
 
-.invited, .going {
+.HTMLeditor {
+    margin-bottom: auto;
+}
+
+.going {
+    height: max-content;
+    margin-top: auto;
+    bottom: 0;
     font-size: 20px;
     font-weight: 100;
     width: 100%;
-    margin-top: auto;
     padding: var(--padding);
+    height: fit-content;
 }
 
 .going span {
@@ -486,12 +519,17 @@ td:nth-child(3) {
 .commands {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--content-color);
+    border-bottom: 2px solid var(--content-theme);
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 .commands:last-of-type {
-    border-top: 2px solid var(--content-color);
+    border-top: 2px solid var(--content-theme);
+}
+
+.commands:first-of-type {
+    border-top: none;
 }
 
 .invite-url {
@@ -499,11 +537,16 @@ td:nth-child(3) {
 }
 
 .invitation {
-    min-height: calc(100svh - 2 * var(--gap) - 4px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: calc(100svh - 2 * var(--gap) - 4px);
 }
+
+.invitation-content {
+    flex-direction: column;
+    display: flex;
+    align-items: space-between;
+    min-height: calc(100svh - 2 * var(--gap) - 4px);
+}
+
 
 .commands-bottom {
     border-bottom: 0;
@@ -536,7 +579,7 @@ td:nth-child(3) {
 }
 
 .window:has(.agenda) .event-small:first-of-type {
-    border-top: 2px solid var(--content-color);
+    border-top: 2px solid var(--content-theme);
 }
 
 
@@ -544,7 +587,7 @@ td:nth-child(3) {
 
 ul {
     padding: var(--padding);
-    border-top: 2px solid var(--content-color);
+    border-top: 2px solid var(--content-theme);
 }
 
 .profile .event:last-of-type {
@@ -563,11 +606,18 @@ ul {
 
 /*/ / MOBILE / /*/
 
+.mobile {
+    display: none;
+}
+
 @media screen and (max-width: 599px) {
     .profile, .events, .seperation-left, .seperation-right{
         display: none;
     }
 
+    .mobile {
+        display: initial;
+    }
 
 }
 
@@ -575,8 +625,116 @@ ul {
 
 }
 
-/*/ / DEBUGGING DD / /*/
-.HTMLeditor red {
-    color: red;
+/*/ / READING THE HTML IN THE INVITATION / /*/
+
+.HTMLeditor {
+    width: 100%;
+    padding: var(--padding);
+    border-bottom: 2px solid var(--content-theme);
 }
 
+.invitation .HTMLeditor {
+    border-bottom: 0;
+}
+
+.HTMLeditor groot {
+    font-size: 26px;
+}
+
+.HTMLeditor klein {
+    font-size: 16px;
+}
+
+.HTMLeditor links {
+    text-align: left;
+}
+
+.HTMLeditor midden {
+    text-align: center;
+}
+
+.HTMLeditor rechts {
+    text-align: right;
+}
+
+.HTMLeditor hr {
+    border-top: var(--content-theme) 1px solid;
+}
+
+.HTMLeditor zwart{color:#000}.HTMLeditor markering-zwart{background-color:#000}
+.HTMLeditor wit{color:#fff}.HTMLeditor markering-wit{background-color:#fff}
+.HTMLeditor rood{color:#f00}.HTMLeditor markering-rood{background-color:#f00}
+.HTMLeditor groen{color:#0f0}.HTMLeditor markering-groen{background-color:#0f0}
+.HTMLeditor blauw{color:#00f}.HTMLeditor markering-blauw{background-color:#00f}
+.HTMLeditor geel{color:#ff0}.HTMLeditor markering-geel{background-color:#ff0}
+.HTMLeditor cyaan{color:#0ff}.HTMLeditor markering-cyaan{background-color:#0ff}
+.HTMLeditor magenta{color:#f0f}.HTMLeditor markering-magenta{background-color:#f0f}
+.HTMLeditor grijs{color:#888}.HTMLeditor markering-grijs{background-color:#888}
+.HTMLeditor donkergrijs{color:#aaa}.HTMLeditor markering-donkergrijs{background-color:#aaa}
+.HTMLeditor lichtgrijs{color:#ddd}.HTMLeditor markering-lichtgrijs{background-color:#ddd}
+.HTMLeditor zilver{color:#ccc}.HTMLeditor markering-zilver{background-color:#ccc}
+.HTMLeditor marineblauw{color:#008}.HTMLeditor markering-marineblauw{background-color:#008}
+.HTMLeditor olijfgroen{color:#880}.HTMLeditor markering-olijfgroen{background-color:#880}
+.HTMLeditor paars{color:#808}.HTMLeditor markering-paars{background-color:#808}
+.HTMLeditor teal{color:#088}.HTMLeditor markering-teal{background-color:#088}
+.HTMLeditor bruin{color:#520}.HTMLeditor markering-bruin{background-color:#520}
+.HTMLeditor oranje{color:#fa0}.HTMLeditor markering-oranje{background-color:#fa0}
+.HTMLeditor roze{color:#fcc}.HTMLeditor markering-roze{background-color:#fcc}
+.HTMLeditor goud{color:#fd7}.HTMLeditor markering-goud{background-color:#fd7}
+
+/*/ / EDITOR / /*/
+
+.colors p {
+    height: auto;
+    min-height: auto;
+    text-align: center;
+}
+
+.editor textarea {
+    min-height: calc(100svh - 2px - (7 * var(--gap)));
+    resize: none;
+}
+
+.editor button {
+    padding: var(--padding);
+}
+
+
+/*/ / MANIFESTO / /*/
+
+.manifesto {
+    max-height: calc(100svh - var(--gap));
+    height: calc(100svh - var(--gap));
+    overflow-y:auto;
+
+}
+
+.manifesto h1 {
+    padding: var(--padding);
+    overflow-y: visible;
+}
+.manifesto a {
+    margin-top: auto;
+}
+
+.manifesto p {
+    height: auto;
+    padding: var(--padding);
+    width: 100%;
+}
+
+.manifesto video {
+    width: 100%;
+    object-fit: contain;
+}
+
+.mailme {
+    align-items: center;
+    height: var(--gap);
+}
+
+.mailme a {
+    display: flex;
+    align-items: center;
+
+}

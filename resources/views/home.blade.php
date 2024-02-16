@@ -13,11 +13,13 @@
         </div>
         <div class="seperation-left"></div>
         <div class="section viewer">
-            
+            @auth
             <div class="view-event">
   
-            </div>    
-
+            </div> 
+            @else
+            @include("_partials.manifesto")
+            @endauth
         </div>
         <div class="seperation-right"></div>
         <div class="section events">

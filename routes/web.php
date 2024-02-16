@@ -19,8 +19,9 @@ use App\Http\Controllers\NavigationController;
 */
 
 Route::get('/', [NavigationController::class, 'show']);
-Route::get('/editor/{id}', [NavigationController::class, 'goToEditor']);
-Route::get('/editor', [NavigationController::class, 'goToEditor']);
+Route::post('/editor/{event}', [NavigationController::class, 'goToEditor']);
+Route::get('/editor', [NavigationController::class, 'showEditor']);
+Route::put('/editor/edit/{event}', [EventController::class, 'editEvent']);
 
 
 //Starting from a url of a certain event

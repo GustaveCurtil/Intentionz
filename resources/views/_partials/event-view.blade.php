@@ -1,8 +1,10 @@
     @if (isset($user))
     @if ($event->creator->id === $user->id)
-    <div class="commands commands-top">  
-            <button class="buttonform"><a href="/editor/{{$event->id}}">Pas aan</a></button>
-
+    <div class="commands">  
+        <form action="/editor/{{$event->id}}" method="POST" class="buttonform">
+            @csrf
+            <button>Bewerk</button>
+        </form>
         <form action="/delete/{{$event->id}}" method="POST" class="buttonform"  onsubmit="return confirm('No way back na dit!\nEvent is dan voor altijd ciao...')">
             @csrf
             @method('DELETE')
@@ -12,6 +14,8 @@
     @endif
     @endif
     <div class="invitation">
+        <div class="invitation-content">
+            <div class="info-wrapper">
         @if (isset($event->picture_path))
         <p class="img"><img src="/storage/{{$event->picture_path}}" loading="lazy"></p>
         @endif
@@ -23,7 +27,10 @@
             <a href="{{$event->location_url}}" target="_blank">maps</a>     
             @endif    
         </div>
+        <br>
         <div class="HTMLeditor">{!! $event->description !!}</div>
+        <br>
+        </div>
         <div class="going">
             <span>Gaan</span> ❀
             @if($event->goingGuests)
@@ -45,6 +52,7 @@
                 @endif
             </div>
         </div>
+    </div>
     </div>
     @if (isset($user))
     @if ($event->creator->id === $user->id)

@@ -20,6 +20,7 @@ class InvitationController extends Controller
         $event = UserEvent::where('invitation_slug', $slug)->first();
         $inputs['user_event_id'] = $event->id;
 
+
         $user = Auth::user();
         $creator = User::where('id', $event->creator_id)->first();
 
@@ -29,9 +30,16 @@ class InvitationController extends Controller
 
         if ($user) {
             $invitation = Invitation::where('user_event_id', $event->id)->where('invited_user_id', $user->id)->first();
-            $invitation->invited_guest_name = $inputs['invited_guest_name'];
-            $invitation->response = $inputs['response'] = filter_var($request->input('response'), FILTER_VALIDATE_BOOLEAN);
-            $invitation->save();
+            if ($invitation) {
+                $invitation->invited_guest_name = $inputs['invited_guest_name'];
+                $invitation->response = $inputs['response'] = filter_var($request->input('response'), FILTER_VALIDATE_BOOLEAN);
+                $invitation->save();
+            } else {
+                $inputs['invited_user_id'] = $user->id;
+                $inputs['response'] = filter_var($request->input('response'), FILTER_VALIDATE_BOOLEAN);
+
+                Invitation::create($inputs); 
+            }
 
             return redirect('/' . $slug);
         }
