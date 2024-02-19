@@ -38,7 +38,9 @@ class NavigationController extends Controller
             $invitation->invitation_link = URL::to($invitation->invitation_slug);
 
             if ($user) {
-                if (!$invitation->creator_id === $user->id) {
+                
+                if ($invitation->creator_id !== $user->id) {
+                    
                 $this->saveInInvitations($user, $invitation);
                 }
                 $yourEvents = $events->where('creator_id', $user->id)->sortBy('date');
@@ -47,7 +49,7 @@ class NavigationController extends Controller
                 });
                 $events = $yourEvents->merge($invitations)->sortBy('date');
                 return view('invitation', ['user' => $user, 'events' => $events, 'yourEvents' => $yourEvents, 'invitation' => $invitation]);
-            }
+            } else 
 
             return view('invitation', ['invitation' => $invitation]);
         }
@@ -99,7 +101,6 @@ class NavigationController extends Controller
                 'invited_user_id' => $user->id,
             ];
             Invitation::firstOrCreate($inputs);
-
     }
 
     public function goToEditor(UserEvent $event) {
