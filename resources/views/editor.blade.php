@@ -23,7 +23,7 @@
         <div class="seperation-left"></div>
         <div class="section viewer">
             <div class="commands commands-top editor">
-                 <a href="/"><button>Terug zonder (nog eens) op te slaan</button></a>
+                 <a href="/"><button>Terug zonder op te slaan</button></a>
             </div>
             <form action="/editor/edit/{{$event->id}}" method="POST" enctype="multipart/form-data" class="editor">
                 @csrf
@@ -42,7 +42,7 @@
         <div class="section events">
             <div class="bar"><h2>Handleiding</h2></div>
             <div class="HTMLeditor">
-                <p>'Enters' worden automatisch opgeslaan als &lt;br /&gt;. (Laat maar weten als of dit niet eerder verwarrend is ;))</p>
+                <p>'Enters' worden automatisch opgeslaan als &lt;br /&gt;.</p>
                 <groot>&lt;groot&gt;groot&lt;/groot&gt;</groot>
                 <klein>&lt;klein&gt;klein&lt;/klein&gt;</klein>
                 <links><p>&lt;links&gt;links uitlijnen&lt;/links&gt;</p></links>
@@ -57,7 +57,9 @@
                 <p>&lt;oranje&gt;<oranje>oranje</oranje>&lt;/oranje&gt;</p>
                 <p>&lt;markering-oranje&gt;<markering-oranje>markering-oranje</markering-oranje>&lt;/markering-oranje&gt;</p>
                 <p style="background-color: rgba(255, 255, 255, 0)">Kleuren: <zwart>zwart</zwart>, <markering-zwart><wit>wit</wit></markering-zwart>, <rood>rood</rood>, <groen>groen</groen>, <blauw>blauw</blauw>, <geel>geel</geel>, <cyaan>cyaan</cyaan>, <magenta>magenta</magenta>, <grijs>grijs</grijs>, <donkergrijs>donkergrijs</donkergrijs>, <markering-zwart><lichtgrijs>lichtgrijs</lichtgrijs></markering-zwart>, <markering-zwart><zilver>zilver</zilver></markering-zwart>, <marineblauw>marineblauw</marineblauw>, <olijfgroen>olijfgroen</olijfgroen>, <paars>paars</paars>, <teal>teal</teal>, <bruin>bruin</bruin>, <oranje>oranje</oranje>, <markering-zwart><roze>roze</roze></markering-zwart>, <goud>goud</goud>.</p>
-        </div>
+                <p><a href="https://emojicopy.com/">Emoji-website</a></p>
+                <p>Foto max. 50kb: <a href="https://doodad.dev/dither-me-this/">foto converter tool</a></p>
+            </div>
         </div>
     </main>
 

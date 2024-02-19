@@ -13,7 +13,7 @@ class EventController extends Controller
         $inputs = $request->validate([
             'date' => 'required',
             'time' => 'required',
-            'title' => 'min:3', 
+            'title' => 'required', 
             'location' => 'required', 
             'description' => 'nullable', 
             'location_url' => 'nullable', 
@@ -65,7 +65,7 @@ class EventController extends Controller
             $inputs = $request->validate([
                 'date' => 'required',
                 'time' => 'required',
-                'title' => 'min:3', 
+                'title' => 'required', 
                 'location' => 'required', 
                 'description' => 'nullable', 
                 'location_url' => 'nullable', 
