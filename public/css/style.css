@@ -738,3 +738,61 @@ ul {
     align-items: center;
 
 }
+
+/*/ / MOBILE HORIZONTAL MODE / /*/
+
+.horizontal {
+    display: none;
+}
+
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+    :root {
+        --gap: 30px;
+    }
+
+    main {
+        display:grid;
+        grid-template-columns: 7fr 2px 6fr;
+        grid-template-areas: 
+        "viewer right profile";
+    }
+
+    .events {
+        display: none;
+    }
+
+    .horizontal {
+        display: inherit;
+        border-bottom: 2px solid var(--content-theme);
+    }
+
+    .mobile {
+        display: inherit;
+    }
+
+    body, form input[type="text"], form input[type="password"], form input[type="date"], form input[type="time"], form input[type="url"], form input[type="file"], form textarea, td, .going {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .homebutton button {
+        padding: 0;
+    }
+    .organisator, .when, .where {
+        font-size: 18px;
+    }
+    button {
+        font-size: 18px;
+    }
+
+    .editor textarea {
+        height: auto;
+    }
+}

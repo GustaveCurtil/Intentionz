@@ -19,6 +19,7 @@
                         </form>
                 </div>
             </div>
+            <p class="horizontal">Editen gaat gemakkelijker lukken als ge uw gsm verticaal draait en nog veel gemakkelijker als ge het op de computer doet ;)</p>
         </div>
         <div class="seperation-left"></div>
         <div class="section viewer">

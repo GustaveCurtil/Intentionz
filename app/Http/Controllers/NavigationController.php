@@ -49,7 +49,7 @@ class NavigationController extends Controller
                 });
                 $events = $yourEvents->merge($invitations)->sortBy('date');
                 return view('invitation', ['user' => $user, 'events' => $events, 'yourEvents' => $yourEvents, 'invitation' => $invitation]);
-            } else 
+            } 
 
             return view('invitation', ['invitation' => $invitation]);
         }
